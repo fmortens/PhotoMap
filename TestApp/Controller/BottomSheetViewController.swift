@@ -10,11 +10,7 @@ import UIKit
 
 class BottomSheetViewController: UIViewController {
     
-    @IBOutlet weak var notchButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
-    
     override func viewDidLoad() {
-        print("Bottom sheet loaded")
         
         let gesture = UIPanGestureRecognizer.init(
             target: self,
@@ -23,7 +19,6 @@ class BottomSheetViewController: UIViewController {
         
         view.addGestureRecognizer(gesture)
         
-        cancelButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +33,7 @@ class BottomSheetViewController: UIViewController {
         
         super.viewDidAppear(animated)
         
-        placeView(withOffset: UIScreen.main.bounds.height - 64)
+        minimizeView()
         
     }
     
@@ -58,7 +53,6 @@ class BottomSheetViewController: UIViewController {
     func placeView(withOffset offset: CGFloat, animatedDelay: Double = 0.5) {
         
         UIView.animate(withDuration: animatedDelay) { [weak self] in
-            
             let frame = self?.view.frame
             
             self?.view.frame = CGRect(
@@ -67,7 +61,6 @@ class BottomSheetViewController: UIViewController {
                 width: frame!.width,
                 height: frame!.height
             )
-            
         }
         
     }
@@ -92,54 +85,44 @@ class BottomSheetViewController: UIViewController {
             in: self.view
         )
         
-        if (recognizer.state == .ended) {
+        if recognizer.state == .ended {
             
-            if y > self.view.frame.height / 2 {
-                print("Less than half \(y)")
-                
-                cancelButton.isHidden = true
-                
-                placeView(
-                    withOffset: parent!.view.frame.height - 64,
-                    animatedDelay: 0.25
-                )
-                
-                notchButton.isHidden = false
-                
-            } else if y < self.view.frame.height / 2 {
-                print("More than half the screen now")
-                
-                notchButton.isHidden = true
-                
-                placeView(withOffset: 0, animatedDelay: 0.25)
-                
-                cancelButton.isHidden = false
+            // Handle quick moves
+            if recognizer.velocity(in: self.view).y <= -2000 {
+                maximizeView()
+            }
+            
+            else if recognizer.velocity(in: self.view).y > 2000 {
+                minimizeView()
+            }
+            
+            // Handle slow moves (snap to position)
+            else if y > self.view.frame.height / 2 {
+                minimizeView()
+            }
+            
+            else if y < self.view.frame.height / 2 {
+                maximizeView()
                 
             }
+            
         }
         
     }
     
-    @IBAction func notchButtonTapped(_ sender: UIButton) {
+    func minimizeView() {
         
-        notchButton.isHidden = true
-        
-        placeView(withOffset: 0, animatedDelay: 0.3)
-        
-        cancelButton.isHidden = false
+        placeView(
+            withOffset: parent!.view.frame.height - 100,
+            animatedDelay: 0.25
+        )
         
     }
     
-    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+    func maximizeView() {
         
-        cancelButton.isHidden = true
-        
-        placeView(
-            withOffset: view.frame.height - 64,
-            animatedDelay: 0.3
-        )
-        
-        notchButton.isHidden = false
+        placeView(withOffset: parent!.view.safeAreaInsets.top , animatedDelay: 0.25)
         
     }
+
 }
