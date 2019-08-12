@@ -71,7 +71,7 @@ class BottomSheetViewController: UIViewController {
     
     func placeView(withOffset offset: CGFloat, animatedDelay: Double = 0.5) {
         
-        UIView.animate(withDuration: animatedDelay) { [weak self] in
+        UIView.animate (withDuration: animatedDelay) { [weak self] in
             let frame = self?.view.frame
             
             self?.view.frame = CGRect(
@@ -87,7 +87,11 @@ class BottomSheetViewController: UIViewController {
     @objc func panGesture(recognizer: UIPanGestureRecognizer) {
         
         let translation = recognizer.translation(in: self.view)
-        let y = self.view.frame.minY
+        var y = self.view.frame.minY
+        
+        if y < parent!.view.safeAreaInsets.top {
+            y = parent!.view.safeAreaInsets.top
+        }
         
         self.view.frame = CGRect(
             x: 0,
