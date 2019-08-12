@@ -97,10 +97,15 @@ class BottomSheetViewController: UIViewController {
             if y > self.view.frame.height / 2 {
                 print("Less than half \(y)")
                 
+                cancelButton.isHidden = true
+                
                 placeView(
                     withOffset: parent!.view.frame.height - 64,
                     animatedDelay: 0.25
                 )
+                
+                notchButton.isHidden = false
+                
             } else if y < self.view.frame.height / 2 {
                 print("More than half the screen now")
                 
