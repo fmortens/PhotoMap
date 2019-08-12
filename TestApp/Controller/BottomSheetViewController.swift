@@ -11,6 +11,7 @@ import UIKit
 class BottomSheetViewController: UIViewController {
     
     @IBOutlet weak var notchButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     override func viewDidLoad() {
         print("Bottom sheet loaded")
@@ -21,6 +22,8 @@ class BottomSheetViewController: UIViewController {
         )
         
         view.addGestureRecognizer(gesture)
+        
+        cancelButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,30 +38,38 @@ class BottomSheetViewController: UIViewController {
         
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 0.5) { [weak self] in
-            let frame = self?.view.frame
-            let yComponent = UIScreen.main.bounds.height - 200
-            self?.view.frame = CGRect(
-                x: 0,
-                y: yComponent,
-                width: frame!.width,
-                height: frame!.height
-            )
-        }
+        placeView(withOffset: UIScreen.main.bounds.height - 64)
         
     }
     
     func prepareBackgroundView() {
         
-//        let blurEffect = UIBlurEffect.init(style: .regular)
-//        let visualEffect = UIVisualEffectView.init(effect: blurEffect)
-//        let bluredView = UIVisualEffectView.init(effect: blurEffect)
-//
-//        bluredView.contentView.addSubview(visualEffect)
-//        visualEffect.frame = UIScreen.main.bounds
-//        bluredView.frame = UIScreen.main.bounds
-//
-//        view.insertSubview(bluredView, at: 0)
+        let blurEffect = UIBlurEffect.init(style: .regular)
+        let visualEffect = UIVisualEffectView.init(effect: blurEffect)
+        let bluredView = UIVisualEffectView.init(effect: blurEffect)
+
+        bluredView.contentView.addSubview(visualEffect)
+        visualEffect.frame = UIScreen.main.bounds
+        bluredView.frame = UIScreen.main.bounds
+
+        view.insertSubview(bluredView, at: 0)
+    }
+    
+    func placeView(withOffset offset: CGFloat, animatedDelay: Double = 0.5) {
+        
+        UIView.animate(withDuration: animatedDelay) { [weak self] in
+            
+            let frame = self?.view.frame
+            
+            self?.view.frame = CGRect(
+                x: 0,
+                y: offset,
+                width: frame!.width,
+                height: frame!.height
+            )
+            
+        }
+        
     }
     
     @objc func panGesture(recognizer: UIPanGestureRecognizer) {
@@ -76,15 +87,54 @@ class BottomSheetViewController: UIViewController {
         recognizer.setTranslation(
             CGPoint(
                 x: 0,
-                y :0
+                y: 0
             ),
             in: self.view
         )
         
+        if (recognizer.state == .ended) {
+            
+            if y > self.view.frame.height / 2 {
+                print("Less than half \(y)")
+                
+                placeView(
+                    withOffset: parent!.view.frame.height - 64,
+                    animatedDelay: 0.25
+                )
+            } else if y < self.view.frame.height / 2 {
+                print("More than half the screen now")
+                
+                notchButton.isHidden = true
+                
+                placeView(withOffset: 0, animatedDelay: 0.25)
+                
+                cancelButton.isHidden = false
+                
+            }
+        }
+        
     }
     
     @IBAction func notchButtonTapped(_ sender: UIButton) {
-        print("Notch tapped")
+        
+        notchButton.isHidden = true
+        
+        placeView(withOffset: 0, animatedDelay: 0.3)
+        
+        cancelButton.isHidden = false
+        
     }
     
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        
+        cancelButton.isHidden = true
+        
+        placeView(
+            withOffset: view.frame.height - 64,
+            animatedDelay: 0.3
+        )
+        
+        notchButton.isHidden = false
+        
+    }
 }

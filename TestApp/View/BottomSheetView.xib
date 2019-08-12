@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomSheetViewController" customModule="TestApp" customModuleProvider="target">
             <connections>
+                <outlet property="cancelButton" destination="Ty2-hw-Jjb" id="tJJ-KY-ZHu"/>
                 <outlet property="notchButton" destination="yeN-ub-B5G" id="1H2-Th-frE"/>
                 <outlet property="view" destination="iN0-l3-epB" id="pfn-Yc-Az5"/>
             </connections>
@@ -37,14 +38,30 @@
                         <action selector="notchButtonTapped:" destination="-1" eventType="touchUpInside" id="0rl-DY-Jxw"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ty2-hw-Jjb" userLabel="CancelButton">
+                    <rect key="frame" x="368" y="44" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="12z-fM-UyE"/>
+                        <constraint firstAttribute="width" constant="30" id="nle-EX-fdz"/>
+                    </constraints>
+                    <state key="normal" image="cancel"/>
+                    <connections>
+                        <action selector="cancelButtonTapped:" destination="-1" eventType="touchUpInside" id="pel-Gx-kQs"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ty2-hw-Jjb" secondAttribute="trailing" constant="16" id="B38-JA-f6Y"/>
                 <constraint firstItem="yeN-ub-B5G" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="QBa-ca-diD"/>
+                <constraint firstItem="Ty2-hw-Jjb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="aMt-qf-DF5"/>
                 <constraint firstItem="yeN-ub-B5G" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="eTV-B2-09j"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="47.826086956521742" y="35.491071428571423"/>
         </view>
     </objects>
+    <resources>
+        <image name="cancel" width="50" height="50"/>
+    </resources>
 </document>
