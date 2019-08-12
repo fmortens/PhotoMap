@@ -55,7 +55,13 @@ class BottomSheetViewController: UIViewController {
     func setupTopBorders() {
         
         let radii = 10
-        let path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: radii, height: radii))
+        
+        let path = UIBezierPath(
+            roundedRect: self.view.bounds,
+            byRoundingCorners: [.topLeft, .topRight],
+            cornerRadii: CGSize(width: radii, height: radii)
+        )
+        
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         
