@@ -21,6 +21,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.frame." value="YES"/>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="47.826086956521742" y="35.491071428571423"/>
         </view>
     </objects>

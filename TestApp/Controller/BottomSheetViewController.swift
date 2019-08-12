@@ -19,6 +19,8 @@ class BottomSheetViewController: UIViewController {
         
         view.addGestureRecognizer(gesture)
         
+        setupTopBorders()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +50,17 @@ class BottomSheetViewController: UIViewController {
         bluredView.frame = UIScreen.main.bounds
 
         view.insertSubview(bluredView, at: 0)
+    }
+    
+    func setupTopBorders() {
+        
+        let radii = 10
+        let path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: radii, height: radii))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        
+        self.view.layer.mask = mask
+        
     }
     
     func placeView(withOffset offset: CGFloat, animatedDelay: Double = 0.5) {
