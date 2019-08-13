@@ -12,6 +12,10 @@ class TestViewController: UITableViewController {
     
     var dummyDataList = ["one", "two", "three"]
     
+    override func viewDidLoad() {
+        view.backgroundColor = .clear
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return dummyDataList.count
@@ -31,6 +35,10 @@ class TestViewController: UITableViewController {
         cell.textLabel?.text = dummyDataList[indexPath.row]
     
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = .clear
     }
     
 }

@@ -72,7 +72,7 @@ class BottomSheetViewController: UIViewController {
     
     func prepareBackgroundView() {
         
-        let blurEffect = UIBlurEffect.init(style: .extraLight)
+        let blurEffect = UIBlurEffect.init(style: .regular)
         let visualEffect = UIVisualEffectView.init(effect: blurEffect)
         let blurredView = UIVisualEffectView.init(effect: blurEffect)
         
