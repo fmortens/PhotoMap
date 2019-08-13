@@ -10,6 +10,8 @@
 		DE37D02F23029DD6006B8CCF /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37D02E23029DD6006B8CCF /* TestViewController.swift */; };
 		DE37D0312302AAF6006B8CCF /* TestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE37D0302302AAF6006B8CCF /* TestView.storyboard */; };
 		DE37D0332302ABC1006B8CCF /* BottomSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE37D0322302ABC1006B8CCF /* BottomSheet.storyboard */; };
+		DE37D0392302BD6C006B8CCF /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE37D0382302BD6C006B8CCF /* MapView.xib */; };
+		DE37D03B2302BE16006B8CCF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37D03A2302BE16006B8CCF /* MainViewController.swift */; };
 		DEE07B9A230171F700664CBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE07B99230171F700664CBA /* AppDelegate.swift */; };
 		DEE07B9C230171F700664CBA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE07B9B230171F700664CBA /* MapViewController.swift */; };
 		DEE07B9F230171F700664CBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE07B9D230171F700664CBA /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 		DE37D02E23029DD6006B8CCF /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		DE37D0302302AAF6006B8CCF /* TestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestView.storyboard; sourceTree = "<group>"; };
 		DE37D0322302ABC1006B8CCF /* BottomSheet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottomSheet.storyboard; sourceTree = "<group>"; };
+		DE37D0382302BD6C006B8CCF /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
+		DE37D03A2302BE16006B8CCF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DEE07B96230171F700664CBA /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE07B99230171F700664CBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEE07B9B230171F700664CBA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -48,9 +52,11 @@
 		DE37D02823029A93006B8CCF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DEE07BA5230171F800664CBA /* LaunchScreen.storyboard */,
+				DEE07B9D230171F700664CBA /* Main.storyboard */,
+				DE37D03A2302BE16006B8CCF /* MainViewController.swift */,
 				DE37D02923029A9F006B8CCF /* BottomSheet */,
 				DE37D02A23029AAB006B8CCF /* Map */,
-				DEE07BA5230171F800664CBA /* LaunchScreen.storyboard */,
 				DE37D02D23029DC0006B8CCF /* Test */,
 			);
 			path = Views;
@@ -69,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				DEE07B9B230171F700664CBA /* MapViewController.swift */,
-				DEE07B9D230171F700664CBA /* Main.storyboard */,
+				DE37D0382302BD6C006B8CCF /* MapView.xib */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -180,6 +186,7 @@
 				DEE07BA7230171F800664CBA /* LaunchScreen.storyboard in Resources */,
 				DEE07BA4230171F800664CBA /* Assets.xcassets in Resources */,
 				DE37D0332302ABC1006B8CCF /* BottomSheet.storyboard in Resources */,
+				DE37D0392302BD6C006B8CCF /* MapView.xib in Resources */,
 				DEE07B9F230171F700664CBA /* Main.storyboard in Resources */,
 				DE37D0312302AAF6006B8CCF /* TestView.storyboard in Resources */,
 			);
@@ -195,6 +202,7 @@
 				DE37D02F23029DD6006B8CCF /* TestViewController.swift in Sources */,
 				DEE07B9C230171F700664CBA /* MapViewController.swift in Sources */,
 				DEE07BA2230171F700664CBA /* TestApp.xcdatamodeld in Sources */,
+				DE37D03B2302BE16006B8CCF /* MainViewController.swift in Sources */,
 				DEE07B9A230171F700664CBA /* AppDelegate.swift in Sources */,
 				DEE07BB62301782300664CBA /* BottomSheetViewController.swift in Sources */,
 			);

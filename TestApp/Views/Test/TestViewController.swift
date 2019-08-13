@@ -13,8 +13,9 @@ class TestViewController: UITableViewController {
     var dummyDataList = ["one", "two", "three"]
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("dummy list should be \(dummyDataList.count) long")
+        
         return dummyDataList.count
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

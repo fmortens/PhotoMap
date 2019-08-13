@@ -10,6 +10,8 @@ import UIKit
 
 class BottomSheetViewController: UIViewController {
     
+    var childController: UIViewController?
+    
     override func viewDidLoad() {
         
         let gesture = UIPanGestureRecognizer.init(
@@ -20,6 +22,9 @@ class BottomSheetViewController: UIViewController {
         view.addGestureRecognizer(gesture)
         
         setupTopBorders()
+        
+        // view.backgroundColor = UIColor.white // Will appear transparent without for some reason
+        // if the prepareBackgroundView is not run that is.
         
     }
     
@@ -47,7 +52,7 @@ class BottomSheetViewController: UIViewController {
         
         let height = view.frame.height
         let width = view.frame.width
-        
+
         self.view.frame = CGRect(
             x: 0,
             y: 0,
@@ -58,6 +63,8 @@ class BottomSheetViewController: UIViewController {
     
     func add(content contentController: UIViewController) {
         
+        childController = contentController
+        
         self.addChild(contentController)
         self.view.addSubview(contentController.view)
         
@@ -65,15 +72,16 @@ class BottomSheetViewController: UIViewController {
     
     func prepareBackgroundView() {
         
-        let blurEffect = UIBlurEffect.init(style: .regular)
+        let blurEffect = UIBlurEffect.init(style: .extraLight)
         let visualEffect = UIVisualEffectView.init(effect: blurEffect)
-        let bluredView = UIVisualEffectView.init(effect: blurEffect)
+        let blurredView = UIVisualEffectView.init(effect: blurEffect)
 
-        bluredView.contentView.addSubview(visualEffect)
+        blurredView.contentView.addSubview(visualEffect)
         visualEffect.frame = UIScreen.main.bounds
-        bluredView.frame = UIScreen.main.bounds
+        blurredView.frame = UIScreen.main.bounds
 
-        view.insertSubview(bluredView, at: 0)
+        view.insertSubview(blurredView, at: 0)
+        
     }
     
     func setupTopBorders() {
@@ -135,17 +143,18 @@ class BottomSheetViewController: UIViewController {
         if recognizer.state == .ended {
             
             // Handle quick moves
-            if recognizer.velocity(in: self.view).y <= -2000 {
+            if recognizer.velocity(in: self.view).y <= -self.view.frame.height / 3 {
                 maximizeView()
             }
             
-            else if recognizer.velocity(in: self.view).y > 2000 {
+            else if recognizer.velocity(in: self.view).y > self.view.frame.height / 2 {
                 minimizeView()
             }
             
             // Handle slow moves (snap to position)
             else if y > self.view.frame.height / 2 {
                 minimizeView()
+                
             }
             
             else if y < self.view.frame.height / 2 {
@@ -159,8 +168,10 @@ class BottomSheetViewController: UIViewController {
     
     func minimizeView() {
         
+        childController!.view.isUserInteractionEnabled = false
+        
         placeView(
-            withOffset: parent!.view.frame.height - 100,
+            withOffset: UIScreen.main.bounds.height - 120,
             animatedDelay: 0.25
         )
         
@@ -168,7 +179,9 @@ class BottomSheetViewController: UIViewController {
     
     func maximizeView() {
         
-        placeView(withOffset: parent!.view.safeAreaInsets.top , animatedDelay: 0.25)
+        childController!.view.isUserInteractionEnabled = true
+        
+        placeView(withOffset: 64 , animatedDelay: 0.25)
         
     }
 
