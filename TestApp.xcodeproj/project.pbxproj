@@ -9,24 +9,25 @@
 /* Begin PBXBuildFile section */
 		DE37D02F23029DD6006B8CCF /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37D02E23029DD6006B8CCF /* TestViewController.swift */; };
 		DE37D0312302AAF6006B8CCF /* TestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE37D0302302AAF6006B8CCF /* TestView.storyboard */; };
-		DE37D0332302ABC1006B8CCF /* BottomSheet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE37D0322302ABC1006B8CCF /* BottomSheet.storyboard */; };
 		DE37D0392302BD6C006B8CCF /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE37D0382302BD6C006B8CCF /* MapView.xib */; };
 		DE37D03B2302BE16006B8CCF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37D03A2302BE16006B8CCF /* MainViewController.swift */; };
+		DEC4BC922302E1E900712A93 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4BC902302E1E900712A93 /* BottomSheetViewController.swift */; };
+		DEC4BC932302E1E900712A93 /* BottomSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC4BC912302E1E900712A93 /* BottomSheetView.xib */; };
 		DEE07B9A230171F700664CBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE07B99230171F700664CBA /* AppDelegate.swift */; };
 		DEE07B9C230171F700664CBA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE07B9B230171F700664CBA /* MapViewController.swift */; };
 		DEE07B9F230171F700664CBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE07B9D230171F700664CBA /* Main.storyboard */; };
 		DEE07BA2230171F700664CBA /* TestApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DEE07BA0230171F700664CBA /* TestApp.xcdatamodeld */; };
 		DEE07BA4230171F800664CBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE07BA3230171F800664CBA /* Assets.xcassets */; };
 		DEE07BA7230171F800664CBA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE07BA5230171F800664CBA /* LaunchScreen.storyboard */; };
-		DEE07BB62301782300664CBA /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE07BB52301782300664CBA /* BottomSheetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DE37D02E23029DD6006B8CCF /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		DE37D0302302AAF6006B8CCF /* TestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestView.storyboard; sourceTree = "<group>"; };
-		DE37D0322302ABC1006B8CCF /* BottomSheet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BottomSheet.storyboard; sourceTree = "<group>"; };
 		DE37D0382302BD6C006B8CCF /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		DE37D03A2302BE16006B8CCF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		DEC4BC902302E1E900712A93 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		DEC4BC912302E1E900712A93 /* BottomSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetView.xib; sourceTree = "<group>"; };
 		DEE07B96230171F700664CBA /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE07B99230171F700664CBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEE07B9B230171F700664CBA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +36,6 @@
 		DEE07BA3230171F800664CBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEE07BA6230171F800664CBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEE07BA8230171F800664CBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DEE07BB52301782300664CBA /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +65,8 @@
 		DE37D02923029A9F006B8CCF /* BottomSheet */ = {
 			isa = PBXGroup;
 			children = (
-				DEE07BB52301782300664CBA /* BottomSheetViewController.swift */,
-				DE37D0322302ABC1006B8CCF /* BottomSheet.storyboard */,
+				DEC4BC902302E1E900712A93 /* BottomSheetViewController.swift */,
+				DEC4BC912302E1E900712A93 /* BottomSheetView.xib */,
 			);
 			path = BottomSheet;
 			sourceTree = "<group>";
@@ -185,10 +185,10 @@
 			files = (
 				DEE07BA7230171F800664CBA /* LaunchScreen.storyboard in Resources */,
 				DEE07BA4230171F800664CBA /* Assets.xcassets in Resources */,
-				DE37D0332302ABC1006B8CCF /* BottomSheet.storyboard in Resources */,
 				DE37D0392302BD6C006B8CCF /* MapView.xib in Resources */,
 				DEE07B9F230171F700664CBA /* Main.storyboard in Resources */,
 				DE37D0312302AAF6006B8CCF /* TestView.storyboard in Resources */,
+				DEC4BC932302E1E900712A93 /* BottomSheetView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,11 +200,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE37D02F23029DD6006B8CCF /* TestViewController.swift in Sources */,
+				DEC4BC922302E1E900712A93 /* BottomSheetViewController.swift in Sources */,
 				DEE07B9C230171F700664CBA /* MapViewController.swift in Sources */,
 				DEE07BA2230171F700664CBA /* TestApp.xcdatamodeld in Sources */,
 				DE37D03B2302BE16006B8CCF /* MainViewController.swift in Sources */,
 				DEE07B9A230171F700664CBA /* AppDelegate.swift in Sources */,
-				DEE07BB62301782300664CBA /* BottomSheetViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

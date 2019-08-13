@@ -2,7 +2,7 @@
 //  BottomSheetViewController.swift
 //  TestApp
 //
-//  Created by Frank Mortensen on 12/08/2019.
+//  Created by Frank Mortensen on 13/08/2019.
 //  Copyright © 2019 Frank Mortensen. All rights reserved.
 //
 
@@ -52,7 +52,7 @@ class BottomSheetViewController: UIViewController {
         
         let height = view.frame.height
         let width = view.frame.width
-
+        
         self.view.frame = CGRect(
             x: 0,
             y: 0,
@@ -75,11 +75,11 @@ class BottomSheetViewController: UIViewController {
         let blurEffect = UIBlurEffect.init(style: .extraLight)
         let visualEffect = UIVisualEffectView.init(effect: blurEffect)
         let blurredView = UIVisualEffectView.init(effect: blurEffect)
-
+        
         blurredView.contentView.addSubview(visualEffect)
         visualEffect.frame = UIScreen.main.bounds
         blurredView.frame = UIScreen.main.bounds
-
+        
         view.insertSubview(blurredView, at: 0)
         
     }
@@ -146,17 +146,17 @@ class BottomSheetViewController: UIViewController {
             if recognizer.velocity(in: self.view).y <= -self.view.frame.height / 3 {
                 maximizeView()
             }
-            
+                
             else if recognizer.velocity(in: self.view).y > self.view.frame.height / 2 {
                 minimizeView()
             }
-            
-            // Handle slow moves (snap to position)
+                
+                // Handle slow moves (snap to position)
             else if y > self.view.frame.height / 2 {
                 minimizeView()
                 
             }
-            
+                
             else if y < self.view.frame.height / 2 {
                 maximizeView()
                 
@@ -184,5 +184,5 @@ class BottomSheetViewController: UIViewController {
         placeView(withOffset: 64 , animatedDelay: 0.25)
         
     }
-
+    
 }
