@@ -41,6 +41,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE37D02823029A93006B8CCF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DE37D02923029A9F006B8CCF /* BottomSheet */,
+				DE37D02A23029AAB006B8CCF /* Map */,
+				DEE07BA5230171F800664CBA /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DE37D02923029A9F006B8CCF /* BottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				DEE07BB52301782300664CBA /* BottomSheetViewController.swift */,
+				DE733929230181D900B0502F /* BottomSheetView.xib */,
+			);
+			path = BottomSheet;
+			sourceTree = "<group>";
+		};
+		DE37D02A23029AAB006B8CCF /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DEE07B9B230171F700664CBA /* MapViewController.swift */,
+				DEE07B9D230171F700664CBA /* Main.storyboard */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		DEE07B8D230171F700664CBA = {
 			isa = PBXGroup;
 			children = (
@@ -61,40 +89,20 @@
 			isa = PBXGroup;
 			children = (
 				DEE07BA8230171F800664CBA /* Info.plist */,
+				DEE07BA3230171F800664CBA /* Assets.xcassets */,
 				DEE07B99230171F700664CBA /* AppDelegate.swift */,
-				DEE07BAE2301724100664CBA /* Model */,
-				DEE07BB02301725E00664CBA /* View */,
-				DEE07BAF2301724B00664CBA /* Controller */,
+				DE37D02823029A93006B8CCF /* Views */,
+				DEE07BAE2301724100664CBA /* Models */,
 			);
 			path = TestApp;
 			sourceTree = "<group>";
 		};
-		DEE07BAE2301724100664CBA /* Model */ = {
+		DEE07BAE2301724100664CBA /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				DEE07BA0230171F700664CBA /* TestApp.xcdatamodeld */,
 			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		DEE07BAF2301724B00664CBA /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				DEE07B9B230171F700664CBA /* MapViewController.swift */,
-				DEE07BB52301782300664CBA /* BottomSheetViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		DEE07BB02301725E00664CBA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				DEE07BA3230171F800664CBA /* Assets.xcassets */,
-				DEE07BA5230171F800664CBA /* LaunchScreen.storyboard */,
-				DEE07B9D230171F700664CBA /* Main.storyboard */,
-				DE733929230181D900B0502F /* BottomSheetView.xib */,
-			);
-			path = View;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
