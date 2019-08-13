@@ -30,20 +30,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func addBottomSheetView() {
         
         let bottomSheetViewController = BottomSheetViewController()
-        self.addChild(bottomSheetViewController)
-        self.view.addSubview(bottomSheetViewController.view)
-        
-        bottomSheetViewController.didMove(toParent: self)
-        
-        let height = view.frame.height
-        let width = view.frame.width
-        
-        bottomSheetViewController.view.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: width,
-            height: height
-        )
+        bottomSheetViewController.add(toParent: self)
         
     }
 
