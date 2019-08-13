@@ -56,6 +56,13 @@ class BottomSheetViewController: UIViewController {
         )
     }
     
+    func add(content contentController: UIViewController) {
+        
+        self.addChild(contentController)
+        self.view.addSubview(contentController.view)
+        
+    }
+    
     func prepareBackgroundView() {
         
         let blurEffect = UIBlurEffect.init(style: .regular)
