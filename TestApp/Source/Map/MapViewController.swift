@@ -16,7 +16,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var mapDelegate: MKMapViewDelegate?
-    var photoReferences = [PhotoReference]()
+    var photoMomentReferences = [PhotoMomentReference]()
     var mapAnnotations = [MKPointAnnotation]()
     
     override func viewDidLoad() {
@@ -25,13 +25,52 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapDelegate = self
         
         loadPhotoReferences()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidSave(_:)), name: Notification.Name.NSManagedObjectContextDidSave, object: nil)
     }
+    
+    @objc func contextObjectsDidSave(_ notification: Notification) {
+        
+        let context = notification.object as? NSManagedObjectContext
+        
+        let request: NSFetchRequest<PhotoMomentReference> = PhotoMomentReference.fetchRequest()
+        
+        do {
+            photoMomentReferences = try context!.fetch(request)
+            
+            for photoMomentReference in photoMomentReferences {
+                
+                let lat = CLLocationDegrees(photoMomentReference.latitude)
+                let long = CLLocationDegrees(photoMomentReference.longitude)
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = ""//photoMomentReference.title
+                annotation.subtitle = photoMomentReference.identifier
+                
+                mapAnnotations.append(annotation)
+                
+            }
+            
+            print("Added annotations \(mapAnnotations.count)")
+            
+            DispatchQueue.main.async {
+                self.mapView.addAnnotations(self.mapAnnotations)
+            }
+            
+        } catch {
+            print("Could not load references from notification \(error)")
+        }
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         addBottomSheetView()
     }
+    
     
     func addBottomSheetView() {
         
@@ -46,26 +85,25 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func loadPhotoReferences() {
         
         print("Loading references from map view controller")
-        let request: NSFetchRequest<PhotoReference> = PhotoReference.fetchRequest()
+        let request: NSFetchRequest<PhotoMomentReference> = PhotoMomentReference.fetchRequest()
         
         do {
-            photoReferences = try context.fetch(request)
+            photoMomentReferences = try context.fetch(request)
             
-            print("Loaded references, \(photoReferences.count) loaded")
+            print("Loaded references, \(photoMomentReferences.count) loaded")
             
-            if photoReferences.count > 0 {
+            if photoMomentReferences.count > 0 {
                 
-                for photoReference in photoReferences {
+                for photoMomentReference in photoMomentReferences {
                     
-                    let lat = CLLocationDegrees(photoReference.latitude)
-                    let long = CLLocationDegrees(photoReference.longitude)
-                    
+                    let lat = CLLocationDegrees(photoMomentReference.latitude)
+                    let long = CLLocationDegrees(photoMomentReference.longitude)
                     let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
                     
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = coordinate
-                    annotation.title = "Photo taken \(String(describing: photoReference.creationDate))"
-                    annotation.subtitle = photoReference.localIdentifier
+                    annotation.title = ""//photoMomentReference.title
+                    annotation.subtitle = photoMomentReference.identifier
                     
                     mapAnnotations.append(annotation)
                     

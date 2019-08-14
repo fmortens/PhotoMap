@@ -13,7 +13,7 @@ import CoreData
 class MainViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var photoReferences = [PhotoReference]()
+    var photoMomentReferences = [PhotoMomentReference]()
     
     override func viewDidLoad() {
         
@@ -46,16 +46,16 @@ class MainViewController: UIViewController {
     func loadPhotoReferences() {
         
         print("Loading references")
-        let request: NSFetchRequest<PhotoReference> = PhotoReference.fetchRequest()
+        let request: NSFetchRequest<PhotoMomentReference> = PhotoMomentReference.fetchRequest()
         
         do {
-            photoReferences = try context.fetch(request)
+            photoMomentReferences = try context.fetch(request)
             
-            if photoReferences.count == 0 {
-                print("No references found, creating from photo library")
+            if photoMomentReferences.count == 0 {
+                print("No photoMomentReferences found, creating from photo library")
                 self.createPhotoReferences()
             } else {
-                print("Loaded references, \(photoReferences.count) loaded")
+                print("Loaded references, \(photoMomentReferences.count) loaded")
             }
         } catch {
             print("Error loading photo references \(error)")
@@ -68,31 +68,64 @@ class MainViewController: UIViewController {
         print("Creating references")
         
         let fetchOptions = PHFetchOptions()
-        let photoAssets = PHAsset.fetchAssets(with: .image, options: fetchOptions) as PHFetchResult<PHAsset>
+//        let photoAssets = PHAsset.fetchAssets(with: .image, options: fetchOptions) as PHFetchResult<PHAsset>
+//
+//        print("Counting \(photoAssets.count ) photos")
         
-        print("Counting \(photoAssets.count ) photos")
+        let collection: PHFetchResult = PHAssetCollection.fetchAssetCollections(with: .moment, subtype: .any, options: fetchOptions)
         
-        photoAssets.enumerateObjects{
-            ( object: AnyObject!, count: Int, stop: UnsafeMutablePointer<ObjCBool> ) in
+        collection.enumerateObjects{ ( collection: AnyObject!, count: Int, stop: UnsafeMutablePointer<ObjCBool> ) in
             
-            if object is PHAsset{
-                let asset = object as! PHAsset
-                print("image was created \(String(describing: asset.creationDate))")
-                
-                if let coordinate = asset.location?.coordinate {
-                    let photoReference = PhotoReference(context: self.context)
+                if collection is PHAssetCollection {
                     
-                    photoReference.localIdentifier = asset.localIdentifier
-                    photoReference.creationDate = asset.creationDate
-                    photoReference.longitude = Float(coordinate.longitude)
-                    photoReference.latitude = Float(coordinate.latitude)
+                    let moment: PHAssetCollection = collection as! PHAssetCollection
                     
-                    self.photoReferences.append(photoReference)
+                    if let title = moment.localizedTitle, let coordinate = moment.approximateLocation?.coordinate {
+                        
+                        let localIdentifier = moment.localIdentifier
+                        
+                        let photoMomentReference = PhotoMomentReference(context: self.context)
+                        photoMomentReference.identifier = localIdentifier
+                        photoMomentReference.title = title
+                        photoMomentReference.latitude = Float(coordinate.latitude)
+                        photoMomentReference.longitude = Float(coordinate.longitude)
+                        
+                        self.photoMomentReferences.append(photoMomentReference)
+                    }
+                    
+                    
+//                    let moment = object as! PHMoment
+//
+//                    print("image was created \(String(describing: moment.creationDate))")
+//
+                    
+            
                 }
-                
-            }
         }
         
+        
+        
+//        photoAssets.enumerateObjects{
+//            ( object: AnyObject!, count: Int, stop: UnsafeMutablePointer<ObjCBool> ) in
+//
+//            if object is PHAsset{
+//                let asset = object as! PHAsset
+//                print("image was created \(String(describing: asset.creationDate))")
+//
+//                if let coordinate = asset.location?.coordinate {
+//                    let photoReference = PhotoReference(context: self.context)
+//
+//                    photoReference.localIdentifier = asset.localIdentifier
+//                    photoReference.creationDate = asset.creationDate
+//                    photoReference.longitude = Float(coordinate.longitude)
+//                    photoReference.latitude = Float(coordinate.latitude)
+//
+//                    self.photoReferences.append(photoReference)
+//                }
+//
+//            }
+//        }
+//
         do {
             try self.context.save()
         } catch {
