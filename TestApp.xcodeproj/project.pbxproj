@@ -49,7 +49,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DE37D02823029A93006B8CCF /* Views */ = {
+		DE37D02823029A93006B8CCF /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				DE37D03A2302BE16006B8CCF /* MainViewController.swift */,
@@ -58,7 +58,7 @@
 				DE37D02923029A9F006B8CCF /* BottomSheet */,
 				DE37D02A23029AAB006B8CCF /* Map */,
 			);
-			path = Views;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		DE37D02923029A9F006B8CCF /* BottomSheet */ = {
@@ -119,7 +119,7 @@
 				DEE07BA8230171F800664CBA /* Info.plist */,
 				DEE07BA3230171F800664CBA /* Assets.xcassets */,
 				DEE07B99230171F700664CBA /* AppDelegate.swift */,
-				DE37D02823029A93006B8CCF /* Views */,
+				DE37D02823029A93006B8CCF /* Source */,
 				DEE07BAE2301724100664CBA /* Models */,
 			);
 			path = TestApp;
