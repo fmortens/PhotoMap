@@ -32,8 +32,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let bottomSheetViewController = BottomSheetViewController()
         bottomSheetViewController.add(toParent: self)
         
-        let testViewController = TestViewController()
-        bottomSheetViewController.add(content: testViewController)
+        let imageLocationTableViewController = ImageLocationTableViewController()
+        bottomSheetViewController.add(content: imageLocationTableViewController)
         
     }
 

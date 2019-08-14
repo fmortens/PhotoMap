@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DE37D02F23029DD6006B8CCF /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37D02E23029DD6006B8CCF /* TestViewController.swift */; };
-		DE37D0312302AAF6006B8CCF /* TestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE37D0302302AAF6006B8CCF /* TestView.storyboard */; };
 		DE37D0392302BD6C006B8CCF /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE37D0382302BD6C006B8CCF /* MapView.xib */; };
 		DE37D03B2302BE16006B8CCF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE37D03A2302BE16006B8CCF /* MainViewController.swift */; };
 		DEC4BC922302E1E900712A93 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4BC902302E1E900712A93 /* BottomSheetViewController.swift */; };
 		DEC4BC932302E1E900712A93 /* BottomSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC4BC912302E1E900712A93 /* BottomSheetView.xib */; };
+		DEDD59192303E6C000CCD901 /* ImageLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD59172303E6C000CCD901 /* ImageLocationTableViewController.swift */; };
+		DEDD591A2303E6C000CCD901 /* ImageLocationListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEDD59182303E6C000CCD901 /* ImageLocationListTableViewController.xib */; };
 		DEE07B9A230171F700664CBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE07B99230171F700664CBA /* AppDelegate.swift */; };
 		DEE07B9C230171F700664CBA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE07B9B230171F700664CBA /* MapViewController.swift */; };
 		DEE07B9F230171F700664CBA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE07B9D230171F700664CBA /* Main.storyboard */; };
@@ -22,12 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DE37D02E23029DD6006B8CCF /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		DE37D0302302AAF6006B8CCF /* TestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestView.storyboard; sourceTree = "<group>"; };
 		DE37D0382302BD6C006B8CCF /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		DE37D03A2302BE16006B8CCF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DEC4BC902302E1E900712A93 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		DEC4BC912302E1E900712A93 /* BottomSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetView.xib; sourceTree = "<group>"; };
+		DEDD59172303E6C000CCD901 /* ImageLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLocationTableViewController.swift; sourceTree = "<group>"; };
+		DEDD59182303E6C000CCD901 /* ImageLocationListTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageLocationListTableViewController.xib; sourceTree = "<group>"; };
 		DEE07B96230171F700664CBA /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE07B99230171F700664CBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEE07B9B230171F700664CBA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -52,12 +52,11 @@
 		DE37D02823029A93006B8CCF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DEE07BA5230171F800664CBA /* LaunchScreen.storyboard */,
-				DEE07B9D230171F700664CBA /* Main.storyboard */,
 				DE37D03A2302BE16006B8CCF /* MainViewController.swift */,
+				DEDD591C2303E7E100CCD901 /* Storyboards */,
+				DEDD591B2303E6C500CCD901 /* ImageLocationTable */,
 				DE37D02923029A9F006B8CCF /* BottomSheet */,
 				DE37D02A23029AAB006B8CCF /* Map */,
-				DE37D02D23029DC0006B8CCF /* Test */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -80,13 +79,22 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		DE37D02D23029DC0006B8CCF /* Test */ = {
+		DEDD591B2303E6C500CCD901 /* ImageLocationTable */ = {
 			isa = PBXGroup;
 			children = (
-				DE37D02E23029DD6006B8CCF /* TestViewController.swift */,
-				DE37D0302302AAF6006B8CCF /* TestView.storyboard */,
+				DEDD59172303E6C000CCD901 /* ImageLocationTableViewController.swift */,
+				DEDD59182303E6C000CCD901 /* ImageLocationListTableViewController.xib */,
 			);
-			path = Test;
+			path = ImageLocationTable;
+			sourceTree = "<group>";
+		};
+		DEDD591C2303E7E100CCD901 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				DEE07BA5230171F800664CBA /* LaunchScreen.storyboard */,
+				DEE07B9D230171F700664CBA /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		DEE07B8D230171F700664CBA = {
@@ -183,11 +191,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEDD591A2303E6C000CCD901 /* ImageLocationListTableViewController.xib in Resources */,
 				DEE07BA7230171F800664CBA /* LaunchScreen.storyboard in Resources */,
 				DEE07BA4230171F800664CBA /* Assets.xcassets in Resources */,
 				DE37D0392302BD6C006B8CCF /* MapView.xib in Resources */,
 				DEE07B9F230171F700664CBA /* Main.storyboard in Resources */,
-				DE37D0312302AAF6006B8CCF /* TestView.storyboard in Resources */,
 				DEC4BC932302E1E900712A93 /* BottomSheetView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,9 +207,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE37D02F23029DD6006B8CCF /* TestViewController.swift in Sources */,
 				DEC4BC922302E1E900712A93 /* BottomSheetViewController.swift in Sources */,
 				DEE07B9C230171F700664CBA /* MapViewController.swift in Sources */,
+				DEDD59192303E6C000CCD901 /* ImageLocationTableViewController.swift in Sources */,
 				DEE07BA2230171F700664CBA /* TestApp.xcdatamodeld in Sources */,
 				DE37D03B2302BE16006B8CCF /* MainViewController.swift in Sources */,
 				DEE07B9A230171F700664CBA /* AppDelegate.swift in Sources */,
