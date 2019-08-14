@@ -11,27 +11,33 @@ import MapKit
 import CoreData
 
 class MapViewController: UIViewController, MKMapViewDelegate {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var mapDelegate: MKMapViewDelegate?
+    
     var photoMomentReferences = [PhotoMomentReference]()
     var mapAnnotations = [MKPointAnnotation]()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        self.mapDelegate = self
+        mapView.delegate = self
         
         loadPhotoReferences()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(contextObjectsDidSave(_:)), name: Notification.Name.NSManagedObjectContextDidSave, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(contextObjectsDidSave(_:)),
+            name: Notification.Name.NSManagedObjectContextDidSave,
+            object: nil
+        )
+        
     }
     
-    @objc func contextObjectsDidSave(_ notification: Notification) {
-        
-        let context = notification.object as? NSManagedObjectContext
+    
+    fileprivate func loadMapAnnotations(_ context: NSManagedObjectContext?) {
         
         let request: NSFetchRequest<PhotoMomentReference> = PhotoMomentReference.fetchRequest()
         
@@ -39,18 +45,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             photoMomentReferences = try context!.fetch(request)
             
             for photoMomentReference in photoMomentReferences {
-                
                 let lat = CLLocationDegrees(photoMomentReference.latitude)
                 let long = CLLocationDegrees(photoMomentReference.longitude)
                 let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                let annotation = MyAnnotation()
                 
-                let annotation = MKPointAnnotation()
                 annotation.coordinate = coordinate
-                annotation.title = ""//photoMomentReference.title
-                annotation.subtitle = photoMomentReference.identifier
+                annotation.title = photoMomentReference.numberOfPhotos//photoMomentReference.title
+                annotation.identifier = photoMomentReference.identifier
                 
                 mapAnnotations.append(annotation)
-                
             }
             
             print("Added annotations \(mapAnnotations.count)")
@@ -62,13 +66,45 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         } catch {
             print("Could not load references from notification \(error)")
         }
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let annotation = view.annotation as! MyAnnotation
+        
+        print("map point selected \(String(describing: annotation.identifier))")
+        
+//        let options = PHFetchOptions()
+//        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+//        options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
+//
+//        let assetsInMoment = PHAsset.fetchAssets(in: moment, options: options)
+//
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        
+        let annotation = view.annotation as! MyAnnotation
+        print("map point deselected \(String(describing: annotation.identifier))")
+        
+    }
+    
+    @objc func contextObjectsDidSave(_ notification: Notification) {
+        
+        let context = notification.object as? NSManagedObjectContext
+        
+        loadMapAnnotations(context)
+        
     }
     
     
     override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
         
         addBottomSheetView()
+        
     }
     
     
@@ -82,42 +118,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
+    
     func loadPhotoReferences() {
         
         print("Loading references from map view controller")
-        let request: NSFetchRequest<PhotoMomentReference> = PhotoMomentReference.fetchRequest()
-        
-        do {
-            photoMomentReferences = try context.fetch(request)
-            
-            print("Loaded references, \(photoMomentReferences.count) loaded")
-            
-            if photoMomentReferences.count > 0 {
-                
-                for photoMomentReference in photoMomentReferences {
-                    
-                    let lat = CLLocationDegrees(photoMomentReference.latitude)
-                    let long = CLLocationDegrees(photoMomentReference.longitude)
-                    let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                    
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = coordinate
-                    annotation.title = ""//photoMomentReference.title
-                    annotation.subtitle = photoMomentReference.identifier
-                    
-                    mapAnnotations.append(annotation)
-                    
-                }
-                
-                self.mapView.addAnnotations(mapAnnotations)
-                
-            }
-            
-        } catch {
-            print("Error loading photo references \(error)")
-        }
+        loadMapAnnotations(context)
         
     }
-
+    
 }
 
+class MyAnnotation: MKPointAnnotation {
+    
+    var identifier: String?
+    
+}

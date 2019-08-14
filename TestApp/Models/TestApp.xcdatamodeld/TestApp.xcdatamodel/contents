@@ -4,9 +4,10 @@
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="numberOfPhotos" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PhotoMomentReference" positionX="-54" positionY="18" width="128" height="105"/>
+        <element name="PhotoMomentReference" positionX="-54" positionY="18" width="128" height="120"/>
     </elements>
 </model>

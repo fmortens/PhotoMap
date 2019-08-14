@@ -72,7 +72,8 @@ class MainViewController: UIViewController {
 //
 //        print("Counting \(photoAssets.count ) photos")
         
-        let collection: PHFetchResult = PHAssetCollection.fetchAssetCollections(with: .moment, subtype: .any, options: fetchOptions)
+        let collection: PHFetchResult = PHAssetCollection.fetchMoments(with: fetchOptions)
+        //PHAssetCollection.fetchAssetCollections(with: .moment, subtype: .any, options: fetchOptions)
         
         collection.enumerateObjects{ ( collection: AnyObject!, count: Int, stop: UnsafeMutablePointer<ObjCBool> ) in
             
@@ -89,6 +90,7 @@ class MainViewController: UIViewController {
                         photoMomentReference.title = title
                         photoMomentReference.latitude = Float(coordinate.latitude)
                         photoMomentReference.longitude = Float(coordinate.longitude)
+                        photoMomentReference.numberOfPhotos = String(moment.estimatedAssetCount)
                         
                         self.photoMomentReferences.append(photoMomentReference)
                     }
@@ -135,3 +137,4 @@ class MainViewController: UIViewController {
     }
     
 }
+
