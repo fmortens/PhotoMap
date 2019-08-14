@@ -18,6 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var photoMomentReferences = [PhotoMomentReference]()
     var mapAnnotations = [MKPointAnnotation]()
+    var bottomSheetController: BottomSheetViewController?
     
     override func viewDidLoad() {
         
@@ -75,12 +76,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         print("map point selected \(String(describing: annotation.identifier))")
         
-//        let options = PHFetchOptions()
-//        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-//        options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
-//
-//        let assetsInMoment = PHAsset.fetchAssets(in: moment, options: options)
-//
+        if let bottomSheetController = self.bottomSheetController {
+            
+            let imageLocationTableController = bottomSheetController.childController as! ImageLocationTableViewController
+            imageLocationTableController.loadImages(forMomentId: annotation.identifier!)
+            
+        }
+        
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
@@ -88,6 +90,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let annotation = view.annotation as! MyAnnotation
         print("map point deselected \(String(describing: annotation.identifier))")
         
+        if let bottomSheetController = self.bottomSheetController {
+            
+            let imageLocationTableController = bottomSheetController.childController as! ImageLocationTableViewController
+            imageLocationTableController.clearImages()
+            
+        }
     }
     
     @objc func contextObjectsDidSave(_ notification: Notification) {
@@ -115,6 +123,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         let imageLocationTableViewController = ImageLocationTableViewController()
         bottomSheetViewController.add(content: imageLocationTableViewController)
+        
+        self.bottomSheetController = bottomSheetViewController
         
     }
     
