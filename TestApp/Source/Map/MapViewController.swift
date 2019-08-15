@@ -81,6 +81,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let imageLocationTableController = bottomSheetController.childController as! ImageLocationTableViewController
             imageLocationTableController.loadImages(forMomentId: annotation.identifier!)
             
+            bottomSheetController.showView()
+            
         }
         
     }
@@ -95,6 +97,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let imageLocationTableController = bottomSheetController.childController as! ImageLocationTableViewController
             imageLocationTableController.clearImages()
             
+            bottomSheetController.hideView()
         }
     }
     
@@ -134,5 +137,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         print("Loading references from map view controller")
         loadMapAnnotations(context)
         
-    }    
+    }
 }

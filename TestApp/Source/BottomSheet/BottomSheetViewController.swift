@@ -37,25 +37,17 @@ class BottomSheetViewController: UIViewController {
         
         super.viewDidAppear(animated)
         
-        minimizeView()
+        hideView()
         
     }
     
     func add(toParent parentController: UIViewController) {
+        
         parentController.addChild(self)
         parentController.view.addSubview(self.view)
         
         self.didMove(toParent: parentController)
         
-        let height = view.frame.height
-        let width = view.frame.width
-        
-        self.view.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: width,
-            height: height
-        )
     }
     
     func add(content contentController: UIViewController) {
@@ -164,7 +156,7 @@ class BottomSheetViewController: UIViewController {
     }
     
     func minimizeView() {
-        
+        print("minimizeView")
         childController!.view.isUserInteractionEnabled = false
         
         placeView(
@@ -175,10 +167,37 @@ class BottomSheetViewController: UIViewController {
     }
     
     func maximizeView() {
+        print("maximizeView")
         
         childController!.view.isUserInteractionEnabled = true
         
         placeView(withOffset: 64 , animatedDelay: 0.25)
+        
+    }
+    
+    func hideView() {
+        print("hide view")
+        UIView.animate (withDuration: 0.3) { [self] in
+            
+            self.view.frame = CGRect(
+                x: 0,
+                y: UIScreen.main.bounds.maxY,
+                width: self.view.frame.width,
+                height: self.view.frame.height
+            )
+            
+        }
+        
+    }
+    
+    func showView() {
+        print("show view")
+        UIView.animate (withDuration: 0.3) { [self] in
+            
+            self.minimizeView()
+                
+            
+        }
         
     }
     
