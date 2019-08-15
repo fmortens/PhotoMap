@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var photoMomentReferences = [PhotoMomentReference]()
+    var photoIdentifier: String?
     
     override func viewDidLoad() {
         
@@ -97,6 +98,19 @@ class MainViewController: UIViewController {
             print("Error saving photoReferences \(error)")
         }
         
+    }
+    
+    func setPhotoIdentifier(identifier: String) {
+        self.photoIdentifier = identifier
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let identifier = photoIdentifier {
+            let destinationVC = segue.destination as! PhotoViewController
+        
+            destinationVC.photoIdentifier = identifier
+        }
     }
     
 }

@@ -12,6 +12,7 @@
 		DE7FB5CB23053AA90021ED45 /* PhotoLocationListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FB5C923053AA90021ED45 /* PhotoLocationListTableViewCell.swift */; };
 		DE7FB5CC23053AA90021ED45 /* PhotoLocationListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE7FB5CA23053AA90021ED45 /* PhotoLocationListTableViewCell.xib */; };
 		DE7FB5CE230541820021ED45 /* MyAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FB5CD230541820021ED45 /* MyAnnotation.swift */; };
+		DE7FB5D0230557E70021ED45 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7FB5CF230557E70021ED45 /* PhotoViewController.swift */; };
 		DEC4BC922302E1E900712A93 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC4BC902302E1E900712A93 /* BottomSheetViewController.swift */; };
 		DEC4BC932302E1E900712A93 /* BottomSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC4BC912302E1E900712A93 /* BottomSheetView.xib */; };
 		DEDD59192303E6C000CCD901 /* ImageLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDD59172303E6C000CCD901 /* ImageLocationTableViewController.swift */; };
@@ -30,6 +31,7 @@
 		DE7FB5C923053AA90021ED45 /* PhotoLocationListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLocationListTableViewCell.swift; sourceTree = "<group>"; };
 		DE7FB5CA23053AA90021ED45 /* PhotoLocationListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoLocationListTableViewCell.xib; sourceTree = "<group>"; };
 		DE7FB5CD230541820021ED45 /* MyAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAnnotation.swift; sourceTree = "<group>"; };
+		DE7FB5CF230557E70021ED45 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		DEC4BC902302E1E900712A93 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		DEC4BC912302E1E900712A93 /* BottomSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetView.xib; sourceTree = "<group>"; };
 		DEDD59172303E6C000CCD901 /* ImageLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLocationTableViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				DE37D03A2302BE16006B8CCF /* MainViewController.swift */,
+				DE7FB5D123056D150021ED45 /* Photo */,
 				DEDD591C2303E7E100CCD901 /* Storyboards */,
 				DEDD591B2303E6C500CCD901 /* ImageLocationTable */,
 				DE37D02923029A9F006B8CCF /* BottomSheet */,
@@ -84,6 +87,14 @@
 				DE37D0382302BD6C006B8CCF /* MapView.xib */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		DE7FB5D123056D150021ED45 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				DE7FB5CF230557E70021ED45 /* PhotoViewController.swift */,
+			);
+			path = Photo;
 			sourceTree = "<group>";
 		};
 		DEDD591B2303E6C500CCD901 /* ImageLocationTable */ = {
@@ -222,6 +233,7 @@
 				DEDD59192303E6C000CCD901 /* ImageLocationTableViewController.swift in Sources */,
 				DE7FB5CB23053AA90021ED45 /* PhotoLocationListTableViewCell.swift in Sources */,
 				DEE07BA2230171F700664CBA /* TestApp.xcdatamodeld in Sources */,
+				DE7FB5D0230557E70021ED45 /* PhotoViewController.swift in Sources */,
 				DE37D03B2302BE16006B8CCF /* MainViewController.swift in Sources */,
 				DE7FB5CE230541820021ED45 /* MyAnnotation.swift in Sources */,
 				DEE07B9A230171F700664CBA /* AppDelegate.swift in Sources */,

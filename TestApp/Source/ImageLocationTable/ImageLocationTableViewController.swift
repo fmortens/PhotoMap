@@ -13,6 +13,7 @@ struct PhotoRecord {
     
     let photo: UIImage
     let location: CLLocation?
+    let identifier: String
     
 }
 
@@ -64,7 +65,7 @@ class ImageLocationTableViewController: UITableViewController {
                     }
                 }
             
-                let photoRecord = PhotoRecord(photo: thumbnail, location: asset.location)
+                let photoRecord = PhotoRecord(photo: thumbnail, location: asset.location, identifier: asset.localIdentifier)
                 
                 self.imageList.append(photoRecord)
                 
@@ -128,6 +129,27 @@ class ImageLocationTableViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let bottomSheetController = parent as? BottomSheetViewController {
+            if let mapViewController = bottomSheetController.parent as? MapViewController {
+                if let topViewController = mapViewController.parent as? MainViewController {
+                    
+                    topViewController.setPhotoIdentifier(
+                        identifier: imageList[indexPath.row].identifier
+                    )
+                    
+                    topViewController.performSegue(
+                        withIdentifier: "Show photo",
+                        sender: self
+                    )
+                }
+            }
+
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

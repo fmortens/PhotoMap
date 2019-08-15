@@ -20,10 +20,69 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <segue destination="lOa-cl-alh" kind="presentation" identifier="Show photo" id="Nq6-f2-W13"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="mCI-O5-Bgy">
+            <objects>
+                <viewController id="lOa-cl-alh" customClass="PhotoViewController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hdo-J6-IBK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AqI-bw-IkQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yBB-h1-hAV">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="yBB-h1-hAV" firstAttribute="leading" secondItem="AqI-bw-IkQ" secondAttribute="leading" id="MvP-8R-Kc4"/>
+                                    <constraint firstAttribute="trailing" secondItem="yBB-h1-hAV" secondAttribute="trailing" id="SR8-Jg-02B"/>
+                                    <constraint firstItem="yBB-h1-hAV" firstAttribute="centerX" secondItem="AqI-bw-IkQ" secondAttribute="centerX" id="WrR-7Z-GR2"/>
+                                    <constraint firstAttribute="bottom" secondItem="yBB-h1-hAV" secondAttribute="bottom" id="my1-db-cf4"/>
+                                    <constraint firstItem="yBB-h1-hAV" firstAttribute="top" secondItem="AqI-bw-IkQ" secondAttribute="top" id="p6w-qM-l1B"/>
+                                    <constraint firstItem="yBB-h1-hAV" firstAttribute="centerY" secondItem="AqI-bw-IkQ" secondAttribute="centerY" id="sAx-vl-eoW"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="lOa-cl-alh" id="hlY-C9-AGX"/>
+                                </connections>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1p7-fS-ZwF">
+                                <rect key="frame" x="367" y="44" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="lOa-cl-alh" eventType="touchUpInside" id="rm1-EL-AeC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="AqI-bw-IkQ" secondAttribute="bottom" id="0wg-1M-od4"/>
+                            <constraint firstItem="OH7-f7-ybi" firstAttribute="trailing" secondItem="1p7-fS-ZwF" secondAttribute="trailing" constant="8" id="BmB-qm-FR2"/>
+                            <constraint firstItem="1p7-fS-ZwF" firstAttribute="top" secondItem="OH7-f7-ybi" secondAttribute="top" id="CdS-zV-mUG"/>
+                            <constraint firstItem="1p7-fS-ZwF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="OH7-f7-ybi" secondAttribute="leading" symbolic="YES" id="FfW-ic-4oZ"/>
+                            <constraint firstAttribute="trailing" secondItem="AqI-bw-IkQ" secondAttribute="trailing" id="eK9-FS-g1j"/>
+                            <constraint firstItem="AqI-bw-IkQ" firstAttribute="top" secondItem="hdo-J6-IBK" secondAttribute="top" id="hrf-7a-ymS"/>
+                            <constraint firstItem="AqI-bw-IkQ" firstAttribute="leading" secondItem="hdo-J6-IBK" secondAttribute="leading" id="nzb-BV-i8c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OH7-f7-ybi"/>
+                    </view>
+                    <connections>
+                        <outlet property="photoView" destination="yBB-h1-hAV" id="Kp0-lL-ETm"/>
+                        <outlet property="scrollView" destination="AqI-bw-IkQ" id="Mdh-yI-Li8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zzS-A7-5MZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="950.72463768115949" y="137.94642857142856"/>
         </scene>
     </scenes>
 </document>
