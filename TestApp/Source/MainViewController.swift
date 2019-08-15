@@ -68,12 +68,7 @@ class MainViewController: UIViewController {
         print("Creating references")
         
         let fetchOptions = PHFetchOptions()
-//        let photoAssets = PHAsset.fetchAssets(with: .image, options: fetchOptions) as PHFetchResult<PHAsset>
-//
-//        print("Counting \(photoAssets.count ) photos")
-        
         let collection: PHFetchResult = PHAssetCollection.fetchMoments(with: fetchOptions)
-        //PHAssetCollection.fetchAssetCollections(with: .moment, subtype: .any, options: fetchOptions)
         
         collection.enumerateObjects{ ( collection: AnyObject!, count: Int, stop: UnsafeMutablePointer<ObjCBool> ) in
             
@@ -94,40 +89,11 @@ class MainViewController: UIViewController {
                         
                         self.photoMomentReferences.append(photoMomentReference)
                     }
-                    
-                    
-//                    let moment = object as! PHMoment
-//
-//                    print("image was created \(String(describing: moment.creationDate))")
-//
-                    
             
                 }
         }
         
         
-        
-//        photoAssets.enumerateObjects{
-//            ( object: AnyObject!, count: Int, stop: UnsafeMutablePointer<ObjCBool> ) in
-//
-//            if object is PHAsset{
-//                let asset = object as! PHAsset
-//                print("image was created \(String(describing: asset.creationDate))")
-//
-//                if let coordinate = asset.location?.coordinate {
-//                    let photoReference = PhotoReference(context: self.context)
-//
-//                    photoReference.localIdentifier = asset.localIdentifier
-//                    photoReference.creationDate = asset.creationDate
-//                    photoReference.longitude = Float(coordinate.longitude)
-//                    photoReference.latitude = Float(coordinate.latitude)
-//
-//                    self.photoReferences.append(photoReference)
-//                }
-//
-//            }
-//        }
-//
         do {
             try self.context.save()
         } catch {

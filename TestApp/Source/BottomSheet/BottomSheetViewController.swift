@@ -23,9 +23,6 @@ class BottomSheetViewController: UIViewController {
         
         setupTopBorders()
         
-        // view.backgroundColor = UIColor.white // Will appear transparent without for some reason
-        // if the prepareBackgroundView is not run that is.
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

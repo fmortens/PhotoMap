@@ -134,12 +134,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         print("Loading references from map view controller")
         loadMapAnnotations(context)
         
-    }
-    
-}
-
-class MyAnnotation: MKPointAnnotation {
-    
-    var identifier: String?
-    
+    }    
 }
