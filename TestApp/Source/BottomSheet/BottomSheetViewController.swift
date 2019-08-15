@@ -154,9 +154,10 @@ class BottomSheetViewController: UIViewController {
         }
         
     }
+
     
     func minimizeView() {
-        print("minimizeView")
+        
         childController!.view.isUserInteractionEnabled = false
         
         placeView(
@@ -166,8 +167,8 @@ class BottomSheetViewController: UIViewController {
         
     }
     
+    
     func maximizeView() {
-        print("maximizeView")
         
         childController!.view.isUserInteractionEnabled = true
         
@@ -175,8 +176,9 @@ class BottomSheetViewController: UIViewController {
         
     }
     
+    
     func hideView() {
-        print("hide view")
+        
         UIView.animate (withDuration: 0.3) { [self] in
             
             self.view.frame = CGRect(
@@ -190,14 +192,10 @@ class BottomSheetViewController: UIViewController {
         
     }
     
+    
     func showView() {
-        print("show view")
-        UIView.animate (withDuration: 0.3) { [self] in
-            
-            self.minimizeView()
-                
-            
-        }
+        
+        UIView.animate (withDuration: 0.3) { [self] in self.minimizeView() }
         
     }
     

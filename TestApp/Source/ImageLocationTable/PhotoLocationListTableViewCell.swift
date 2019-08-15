@@ -12,6 +12,7 @@ class PhotoLocationListTableViewCell: UITableViewCell {
 
     
     @IBOutlet var photoView: UIImageView!
+    @IBOutlet var locationLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

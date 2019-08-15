@@ -52,13 +52,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 let annotation = MyAnnotation()
                 
                 annotation.coordinate = coordinate
-                annotation.title = photoMomentReference.numberOfPhotos//photoMomentReference.title
+                //annotation.title = photoMomentReference.numberOfPhotos//photoMomentReference.title
                 annotation.identifier = photoMomentReference.identifier
                 
                 mapAnnotations.append(annotation)
             }
-            
-            print("Added annotations \(mapAnnotations.count)")
             
             DispatchQueue.main.async {
                 self.mapView.addAnnotations(self.mapAnnotations)
@@ -74,23 +72,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         let annotation = view.annotation as! MyAnnotation
         
-        print("map point selected \(String(describing: annotation.identifier))")
-        
         if let bottomSheetController = self.bottomSheetController {
-            
             let imageLocationTableController = bottomSheetController.childController as! ImageLocationTableViewController
             imageLocationTableController.loadImages(forMomentId: annotation.identifier!)
             
             bottomSheetController.showView()
-            
         }
         
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        
-        let annotation = view.annotation as! MyAnnotation
-        print("map point deselected \(String(describing: annotation.identifier))")
         
         if let bottomSheetController = self.bottomSheetController {
             
@@ -99,6 +90,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             bottomSheetController.hideView()
         }
+        
     }
     
     @objc func contextObjectsDidSave(_ notification: Notification) {
@@ -134,7 +126,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func loadPhotoReferences() {
         
-        print("Loading references from map view controller")
         loadMapAnnotations(context)
         
     }

@@ -9,9 +9,16 @@
 import UIKit
 import Photos
 
+struct PhotoRecord {
+    
+    let photo: UIImage
+    let location: CLLocation?
+    
+}
+
 class ImageLocationTableViewController: UITableViewController {
     
-    var imageList = [UIImage]()
+    var imageList = [PhotoRecord]()
     
     override func viewDidLoad() {
         
@@ -40,38 +47,43 @@ class ImageLocationTableViewController: UITableViewController {
                 let asset: PHAsset = asset as! PHAsset
                 
                 let manager = PHImageManager.default()
-                let option = PHImageRequestOptions()
+                let options = PHImageRequestOptions()
                 var thumbnail = UIImage()
                 
-                option.isSynchronous = true
+                options.isSynchronous = true
                 
                 manager.requestImage(
                     for: asset,
-                    targetSize: CGSize(width: 250, height: 250),
-                    contentMode: .aspectFit,
-                    options: option,
-                    resultHandler: { (result, info) -> Void in
-                        thumbnail = result!
+                    targetSize: CGSize(width: 150, height: 150),
+                    contentMode: .aspectFill,
+                    options: options
+                ) { (image, info) in
+                    
+                    if let image = image {
+                        thumbnail = image
                     }
-                )
+                }
+            
+                let photoRecord = PhotoRecord(photo: thumbnail, location: asset.location)
                 
-                self.imageList.append(thumbnail)
+                self.imageList.append(photoRecord)
                 
             }
             
         }
         
-        
-            tableView.reloadData()
-        
-            
+        tableView.reloadData()
         
     }
     
     func registerTableViewCells() {
         
         let photoLocationListTableViewCell = UINib(nibName: "PhotoLocationListTableViewCell", bundle: nil)
-        self.tableView.register(photoLocationListTableViewCell, forCellReuseIdentifier: "PhotoLocationListTableViewCell")
+        
+        self.tableView.register(
+            photoLocationListTableViewCell,
+            forCellReuseIdentifier: "PhotoLocationListTableViewCell"
+        )
         
     }
     
@@ -90,13 +102,30 @@ class ImageLocationTableViewController: UITableViewController {
         
         let cell: PhotoLocationListTableViewCell = {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoLocationListTableViewCell") as? PhotoLocationListTableViewCell else {
-                return PhotoLocationListTableViewCell(style: .default, reuseIdentifier: "PhotoLocationListTableViewCell")
+                
+                return PhotoLocationListTableViewCell(
+                    style: .default,
+                    reuseIdentifier: "PhotoLocationListTableViewCell"
+                )
+                
             }
 
             return cell
         }()
         
-        cell.photoView.image = imageList[indexPath.row]
+        let photoRecord = imageList[indexPath.row]
+        
+        cell.photoView.image = photoRecord.photo
+        
+        if let location = photoRecord.location {
+            CLGeocoder().reverseGeocodeLocation(location) { (placeMarks, error) in
+                
+                if let placeMark: CLPlacemark = placeMarks?[0] {
+                    cell.locationLabel.text = "\(placeMark.name ?? ""), \(placeMark.locality ?? "")"
+                }
+                
+            }
+        }
         
         return cell
     }

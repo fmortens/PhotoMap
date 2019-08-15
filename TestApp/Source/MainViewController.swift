@@ -45,7 +45,6 @@ class MainViewController: UIViewController {
     
     func loadPhotoReferences() {
         
-        print("Loading references")
         let request: NSFetchRequest<PhotoMomentReference> = PhotoMomentReference.fetchRequest()
         
         do {
@@ -64,8 +63,6 @@ class MainViewController: UIViewController {
     }
     
     func createPhotoReferences() {
-        
-        print("Creating references")
         
         let fetchOptions = PHFetchOptions()
         let collection: PHFetchResult = PHAssetCollection.fetchMoments(with: fetchOptions)
