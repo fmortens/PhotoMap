@@ -37,7 +37,6 @@ class BottomSheetViewController: UIViewController {
         
         super.viewDidAppear(animated)
         
-        hideView()
         
     }
     

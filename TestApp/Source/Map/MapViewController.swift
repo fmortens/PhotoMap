@@ -35,6 +35,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             object: nil
         )
         
+        addBottomSheetView()
+        
     }
     
     
@@ -52,7 +54,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 let annotation = MyAnnotation()
                 
                 annotation.coordinate = coordinate
-                //annotation.title = photoMomentReference.numberOfPhotos//photoMomentReference.title
                 annotation.identifier = photoMomentReference.identifier
                 
                 mapAnnotations.append(annotation)
@@ -102,15 +103,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(animated)
-        
-        addBottomSheetView()
-        
-    }
-    
-    
     func addBottomSheetView() {
         
         let bottomSheetViewController = BottomSheetViewController()
@@ -120,6 +112,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         bottomSheetViewController.add(content: imageLocationTableViewController)
         
         self.bottomSheetController = bottomSheetViewController
+        
+        bottomSheetViewController.hideView()
         
     }
     

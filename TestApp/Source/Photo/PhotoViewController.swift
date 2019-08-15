@@ -35,12 +35,11 @@ class PhotoViewController: UIViewController, UIScrollViewDelegate {
             options.deliveryMode = .opportunistic
             options.isSynchronous = true
             options.resizeMode = .exact
-            //options.deliveryMode = .highQualityFormat
             
             let manager = PHImageManager.default()
             manager.requestImage(
                 for: asset,
-                targetSize: PHImageManagerMaximumSize,//CGSize(width: 2000, height: 2000),
+                targetSize: PHImageManagerMaximumSize,
                 contentMode: .aspectFit,
                 options: options
             ) { (result, info) in
