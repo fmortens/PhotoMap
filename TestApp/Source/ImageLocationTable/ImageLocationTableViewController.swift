@@ -14,7 +14,13 @@ class ImageLocationTableViewController: UITableViewController {
     var imageList = [UIImage]()
     
     override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
         view.backgroundColor = .clear
+        
+        self.registerTableViewCells()
+        
     }
 
     
@@ -62,6 +68,13 @@ class ImageLocationTableViewController: UITableViewController {
         
     }
     
+    func registerTableViewCells() {
+        
+        let photoLocationListTableViewCell = UINib(nibName: "PhotoLocationListTableViewCell", bundle: nil)
+        self.tableView.register(photoLocationListTableViewCell, forCellReuseIdentifier: "PhotoLocationListTableViewCell")
+        
+    }
+    
     func clearImages() {
         self.imageList.removeAll()
         tableView.reloadData()
@@ -75,21 +88,25 @@ class ImageLocationTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell: UITableViewCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "testCell") else {
-                return UITableViewCell(style: .default, reuseIdentifier: "testCell")
+        let cell: PhotoLocationListTableViewCell = {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoLocationListTableViewCell") as? PhotoLocationListTableViewCell else {
+                return PhotoLocationListTableViewCell(style: .default, reuseIdentifier: "PhotoLocationListTableViewCell")
             }
-            
+
             return cell
         }()
         
-        cell.imageView?.image = imageList[indexPath.row]
+        cell.photoView.image = imageList[indexPath.row]
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = .clear
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
     
 }
