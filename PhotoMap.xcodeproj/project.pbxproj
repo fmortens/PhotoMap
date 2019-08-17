@@ -36,7 +36,7 @@
 		DEC4BC912302E1E900712A93 /* BottomSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetView.xib; sourceTree = "<group>"; };
 		DEDD59172303E6C000CCD901 /* ImageLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLocationTableViewController.swift; sourceTree = "<group>"; };
 		DEDD59182303E6C000CCD901 /* ImageLocationListTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageLocationListTableViewController.xib; sourceTree = "<group>"; };
-		DEE07B96230171F700664CBA /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEE07B96230171F700664CBA /* PhotoMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE07B99230171F700664CBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEE07B9B230171F700664CBA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DEE07B9E230171F700664CBA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		DEE07B8D230171F700664CBA = {
 			isa = PBXGroup;
 			children = (
-				DEE07B98230171F700664CBA /* TestApp */,
+				DEE07B98230171F700664CBA /* PhotoMap */,
 				DEE07B97230171F700664CBA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -128,12 +128,12 @@
 		DEE07B97230171F700664CBA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DEE07B96230171F700664CBA /* TestApp.app */,
+				DEE07B96230171F700664CBA /* PhotoMap.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DEE07B98230171F700664CBA /* TestApp */ = {
+		DEE07B98230171F700664CBA /* PhotoMap */ = {
 			isa = PBXGroup;
 			children = (
 				DEE07BA8230171F800664CBA /* Info.plist */,
@@ -142,7 +142,7 @@
 				DE37D02823029A93006B8CCF /* Source */,
 				DEE07BAE2301724100664CBA /* Models */,
 			);
-			path = TestApp;
+			path = PhotoMap;
 			sourceTree = "<group>";
 		};
 		DEE07BAE2301724100664CBA /* Models */ = {
@@ -156,9 +156,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DEE07B95230171F700664CBA /* TestApp */ = {
+		DEE07B95230171F700664CBA /* PhotoMap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DEE07BAB230171F800664CBA /* Build configuration list for PBXNativeTarget "TestApp" */;
+			buildConfigurationList = DEE07BAB230171F800664CBA /* Build configuration list for PBXNativeTarget "PhotoMap" */;
 			buildPhases = (
 				DEE07B92230171F700664CBA /* Sources */,
 				DEE07B93230171F700664CBA /* Frameworks */,
@@ -168,9 +168,9 @@
 			);
 			dependencies = (
 			);
-			name = TestApp;
+			name = PhotoMap;
 			productName = TestApp;
-			productReference = DEE07B96230171F700664CBA /* TestApp.app */;
+			productReference = DEE07B96230171F700664CBA /* PhotoMap.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -188,7 +188,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DEE07B91230171F700664CBA /* Build configuration list for PBXProject "TestApp" */;
+			buildConfigurationList = DEE07B91230171F700664CBA /* Build configuration list for PBXProject "PhotoMap" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -201,7 +201,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DEE07B95230171F700664CBA /* TestApp */,
+				DEE07B95230171F700664CBA /* PhotoMap */,
 			);
 		};
 /* End PBXProject section */
@@ -384,7 +384,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NRNCDR832H;
-				INFOPLIST_FILE = TestApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PhotoMap/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -402,7 +402,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NRNCDR832H;
-				INFOPLIST_FILE = TestApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/PhotoMap/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -417,7 +417,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DEE07B91230171F700664CBA /* Build configuration list for PBXProject "TestApp" */ = {
+		DEE07B91230171F700664CBA /* Build configuration list for PBXProject "PhotoMap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DEE07BA9230171F800664CBA /* Debug */,
@@ -426,7 +426,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DEE07BAB230171F800664CBA /* Build configuration list for PBXNativeTarget "TestApp" */ = {
+		DEE07BAB230171F800664CBA /* Build configuration list for PBXNativeTarget "PhotoMap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DEE07BAC230171F800664CBA /* Debug */,
